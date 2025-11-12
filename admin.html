@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Create Bus Routes</title>
+  <link rel="stylesheet" href="assets/style/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <script>
+  if (sessionStorage.getItem("isAdminLoggedIn") !== "true") {
+    alert("Please log in first!");
+    window.location.href = "login.html";
+  }
+</script>
+
+  <header>
+    <h1>BlueBus Booking System</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="admin.html">Admin</a>
+      <a href="report.html">Report</a>
+    </nav>
+    <button id="themeToggle">🌙</button>
+    <button id="logoutBtn">Logout</button>
+  </header>
+</body>
+
+  <div class="container">
+    <h2>Create New Route & Schedule</h2>
+    <form id="routeForm">
+  <label>Route Title:</label>
+  <input type="text" id="routeTitle" required>
+
+  <label>Description:</label>
+  <input type="text" id="routeDescription" required>
+
+  <label>Time:</label>
+  <input type="text" id="routeTime" required>
+
+  <label>Seats:</label>
+  <input type="number" id="routeSeats" min="1" required>
+
+  <button type="submit">Add Route</button>
+</form>
+
+<p id="message" style="margin-top:10px; color:green;"></p>
+
+    <h2 style="margin-top:40px;">Existing Routes</h2>
+    <div id="routeList"></div>
+  </div>
+
+  <footer>© 2025 BlueBus Booking System</footer>
+
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script> const logoutBtn = document.getElementById("logoutBtn"); 
+
+if (logoutBtn) { 
+  logoutBtn.addEventListener("click", () => { 
+  localStorage.removeItem("loggedInUser"); 
+  alert("You have been logged out."); 
+window.location.href = "login.html"; 
+}); }
+ </script>
+
+
+</body>
+</html>

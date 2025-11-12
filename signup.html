@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Signup</title>
+  <link rel="stylesheet" href="assets/style/style.css">
+</head>
+<body>
+  <header>
+    <h1>BlueBus Booking System</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Create Admin Account</h2>
+
+    <label for="newUsername">Username:</label>
+    <input type="text" id="newUsername" placeholder="Enter new username" required>
+
+    <label for="newPassword">Password:</label>
+    <input type="password" id="newPassword" placeholder="Enter new password" required>
+
+    <!-- Make sure button type is "button" -->
+    <button type="button" id="signupBtn">Sign Up</button>
+
+    <p style="margin-top:10px;">Already have an account? <a href="login.html">Login here</a></p>
+  </div>
+
+  <footer>© 2025 BlueBus Booking System</footer>
+
+  <script>
+    document.getElementById("signupBtn").addEventListener("click", () => {
+      const username = document.getElementById("newUsername").value.trim();
+      const password = document.getElementById("newPassword").value.trim();
+
+      if (!username || !password) {
+        alert("Please fill in both fields.");
+        return;
+      }
+
+      const admins = JSON.parse(localStorage.getItem("admins") || "{}");
+
+      if (admins[username]) {
+        alert("Username already exists. Please choose another.");
+        return;
+      }
+
+      admins[username] = password;
+      localStorage.setItem("admins", JSON.stringify(admins));
+
+      alert("Admin account created successfully!");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>
+
+

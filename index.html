@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BlueBus Booking System</title>
+  <link rel="stylesheet" href="assets/style/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <h1>BlueBus Booking System</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="admin.html">Admin</a>
+      <a href="report.html">Report</a>
+    </nav>
+    <button id="themeToggle">🌙</button>
+  </header>
+
+<div class="container">
+
+  <img src="assets/photos/bluebus.jpg" alt="Bus Image" class="bus-image">
+
+  <h2>Book Your Bus Ticket</h2>
+
+  <!-- USER IDENTIFICATION -->
+
+  <label for="userName">Your Name:</label>
+  <input type="text" id="userName" placeholder="Enter your name" required>
+
+  <label for="userEmail">Email:</label>
+  <input type="email" id="userEmail" placeholder="Enter your email" required>
+
+  <!-- ROUTE SELECTION -->
+  <label for="routeSelect">Select Route:</label>
+  <select id="routeSelect">
+    <option value="">-- Choose a route --</option>
+  </select>
+
+  <label for="timeSelect">Select Time:</label>
+  <select id="timeSelect">
+    <option value="">-- Choose time --</option>
+  </select>
+
+  <button id="bookBtn">Book Route</button>
+
+  <p id="bookMsg" style="margin-top:15px;"></p>
+
+    <h2 style="margin-top:30px;">Give Feedback</h2>
+  <label for="feedbackText">Your Feedback:</label>
+  <textarea id="feedbackText" placeholder="Write your feedback here :)" style="width:95%; height:150px; resize:none; padding:12px; border-radius:10px; border:1.5px solid #ccc;"></textarea>
+  <button id="submitFeedbackBtn">Submit Feedback</button>
+  <p id="feedbackMsg" style="margin-top:10px;"></p>
+</div>
+
+  <footer>© 2025 BlueBus Booking System</footer>
+
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+

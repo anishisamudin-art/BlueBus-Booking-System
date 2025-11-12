@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlueBus Booking Report</title>
+
+  <link rel="stylesheet" href="assets/style/style.css">
+</head>
+
+<body>
+  <script>
+    if (sessionStorage.getItem("isAdminLoggedIn") !== "true") {
+      alert("Please log in first!");
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <header>
+    <h1>BlueBus Booking Report</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="admin.html">Admin</a>
+      <a href="report.html">Report</a>
+    </nav>
+    <button id="logoutBtn">Logout</button>
+  </header>
+
+  <div class="container">
+    <h2>All Route Bookings</h2>
+    <div id="reportContainer"></div>
+
+    <h2>Visual Summary</h2>
+    <div class="card">
+    <canvas id="aggChart" width="600" height="300"></canvas>
+
+    <h2>User Feedback</h2>
+<div id="feedbackReportContainer" class="card" style="padding:15px; max-height:300px; overflow-y:auto;">
+</div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 BlueBus Booking System</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", () => {
+        sessionStorage.removeItem("isAdminLoggedIn");
+        sessionStorage.removeItem("adminName");
+        alert("You have been logged out.");
+        window.location.href = "login.html";
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (typeof renderReport === "function") {
+        renderReport();
+        renderFeedbackReport();
+      }
+    });
+  </script>
+</body>
+</html>
